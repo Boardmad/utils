@@ -6,3 +6,5 @@
 * paasstop.sh - issues a graceful server shutdown to a running instance of the PaaS
 * paasclear.sh - clears down PaaS and resets configuration
 * passrebuild.sh - rebuilds the PaaS ready for a 'paasstart.sh'
+
+Pull all scripts locally (~/xtclang/utils) and chmod 755 to make executable
