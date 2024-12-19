@@ -1,5 +1,5 @@
 <h2>Shell scripts to ease management of the xtclang PaaS</h2>
-Depends on manual creation of the XVM 
+[link to MR build script for xvm/platform/examples]
 
 * paasstart.sh - prompts for a new admin password (if run for the first time) for the PaaS or the existing password to enable the PaaS
 * paasstop.sh - issues a graceful server shutdown to a running instance of the PaaS
