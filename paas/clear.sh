@@ -10,13 +10,13 @@ case $yn in
 	[yY] ) echo Clearing down...;
     #clear down
     #copy port-forwarding.conf to xqiz.it root
-    cp ~/xqiz.it/platform/port-forwarding.conf ~/xqiz.it/port-forwarding.conf
+   # cp ~/xqiz.it/platform/port-forwarding.conf ~/xqiz.it/port-forwarding.conf
     #clean down redundant/out-of-date PaaS configuration
     rm -rfv ~/xqiz.it/accounts
     rm -rfv ~/xqiz.it/users
     rm -rfv ~/xqiz.it/platform
     #copy back port-forwarding ruleset
-    cp ~/xqiz.it/port-forwarding.conf ~/xqiz.it/platform/port-forwarding.conf
+    #cp ~/xqiz.it/port-forwarding.conf ~/xqiz.it/platform/port-forwarding.conf
     echo PaaS cleared and reset...remember to rebuild!;
     exit;;
 	[nN] ) echo Changed your mind...!;
