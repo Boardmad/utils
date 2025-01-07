@@ -16,4 +16,3 @@ case $yn in
 	* ) echo "Durrrrr..!!"
 esac
 echo "XDK vaped...now rebuild!"
-done
