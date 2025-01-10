@@ -1,0 +1,37 @@
+# hostcfg.txt
+
+# log onto the host linux instance
+ssh USER@HOST_IP_ADDR
+  
+# On first setup create folders
+mkdir xdk
+mkdir xqiz.it
+mkdir xqiz.it/lib
+mkdir xqiz.it/platform
+cd xqiz.it
+echo '{"dName":"C=USA,S=MA,L=Lexington,OU=hosting,O=xqiz.it,CN=host.xqiz.it",
+"cert-provider":"certbot",
+"httpPort":80,
+"httpsPort":443
+}' > platform/cfg.json
+
+#echo '{"dName":"C=USA,S=MA,L=Lexington,OU=hosting,O=xqiz.it,CN=host.xqiz.it",
+#"cert-provider":"certbot",
+#"httpPort":80,
+#"httpsPort":443,
+#"proxies":["192.168.1.30"]
+#}' > platform/cfg.json
+  
+# copy the latest builds to HOST_IP_ADDR
+# Build paths may be different but we should probably be opinionated  
+scp -r ~/xtclang/xvm/xdk/build/install/xdk/* USER@HOST_IP_ADDR:~/xdk
+scp -r ~/xtclang/platform/lib/* USER@HOST_IP_ADDR:~/xqiz.it/lib
+
+# ensure that "openssl" and "keytool" are installed
+# install the "certbot"
+sudo apt install certbot
+
+# start the platform in debug mode
+xec -L xqiz.it/lib/ kernel.xqiz.it $password
+# or in "production" mode
+nohup xec -L xqiz.it/lib/ kernel.xqiz.it $password &> platform.out&USER
