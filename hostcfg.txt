@@ -1,13 +1,14 @@
-# hostcfg.txt
+# hostcfg.txt - should be run from your build environment
 
 # log onto the host linux instance
-ssh USER@HOST_IP_ADDR
+ssh USER@HOST_IP_ADDR ... enter pwd for local user account
   
-# On first setup create folders
+# On first setup of the host machine create
 mkdir xdk
 mkdir xqiz.it
 mkdir xqiz.it/lib
 mkdir xqiz.it/platform
+# cd into 
 cd xqiz.it
 echo '{"dName":"C=USA,S=MA,L=Lexington,OU=hosting,O=xqiz.it,CN=host.xqiz.it",
 "cert-provider":"certbot",
@@ -15,6 +16,8 @@ echo '{"dName":"C=USA,S=MA,L=Lexington,OU=hosting,O=xqiz.it,CN=host.xqiz.it",
 "httpsPort":443
 }' > platform/cfg.json
 
+# this only kept for reference if we ever decide to have a receiver intermediate
+# instance between the outside network and 'live' xtc instance
 #echo '{"dName":"C=USA,S=MA,L=Lexington,OU=hosting,O=xqiz.it,CN=host.xqiz.it",
 #"cert-provider":"certbot",
 #"httpPort":80,
