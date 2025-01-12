@@ -1,14 +1,14 @@
-# hostcfg.txt - should be run from your build environment
+# hostcfg.txt - run from build environment
 
 # log onto the host linux instance
-ssh USER@HOST_IP_ADDR ... enter pwd for local user account
+ssh USER@HOST_IP_ADDR 
   
-# On first setup of the host machine create
+# On first setup of the host machine 
 mkdir xdk
 mkdir xqiz.it
 mkdir xqiz.it/lib
 mkdir xqiz.it/platform
-# cd into 
+
 cd xqiz.it
 echo '{"dName":"CN=xtc-platform.localhost.xqiz.it",
 "cert-provider":"self",
@@ -16,13 +16,13 @@ echo '{"dName":"CN=xtc-platform.localhost.xqiz.it",
 "httpsPort":8090
 }' > platform/cfg.json
   
-# copy the latest builds to HOST_IP_ADDR
+# copy your latest build to HOST_IP_ADDR
 # Build paths may be different but we should probably be opinionated  
 scp -r ~/xtclang/xvm/xdk/build/install/xdk/* USER@HOST_IP_ADDR:~/xdk
 scp -r ~/xtclang/platform/lib/* USER@HOST_IP_ADDR:~/xqiz.it/lib
 
+# maintained for when/if we use non-locally signed certs
 # ensure that "openssl" and "keytool" are installed
-# install the "certbot"
 # sudo apt install certbot
 
 # start the paas from ~/ in debug mode
