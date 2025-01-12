@@ -22,7 +22,7 @@ scp -r ~/xtclang/xvm/xdk/build/install/xdk/* USER@HOST_IP_ADDR:~/xdk
 scp -r ~/xtclang/platform/lib/* USER@HOST_IP_ADDR:~/xqiz.it/lib
 
 # update the HOST_MACHINE ~/.bashrc
-export XDK_HOME="/xdk"
+export XDK_HOME="/Users/USER/xdk" [where USER is the local account]
 
 # maintained for when/if we use non-locally signed certs
 # ensure that "openssl" and "keytool" are installed
