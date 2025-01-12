@@ -24,6 +24,17 @@ scp -r ~/xtclang/platform/lib/* USER@HOST_IP_ADDR:~/xqiz.it/lib
 # update the HOST_MACHINE ~/.bashrc
 export XDK_HOME="/Users/USER/xdk" [where USER is the local account]
 
+# amend iptables forwarding rules
+# Redirect incoming traffic on port 80 to port 8080
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.168.86.47:8080
+# Redirect incoming traffic on port 443 to port 8090
+sudo iptables -t nat -A PREROUTING -p tcp --dport 443 -j DNAT --to-destination 192.168.86.47:8090
+# Ensure return traffic is routed correctly
+sudo iptables -t nat -A POSTROUTING -p tcp -d 192.168.86.47 --dport 8080 -j MASQUERADE
+sudo iptables -t nat -A POSTROUTING -p tcp -d 192.168.86.47 --dport 8090 -j MASQUERADE
+
+
+
 # maintained for when/if we use non-locally signed certs
 # ensure that "openssl" and "keytool" are installed
 # sudo apt install certbot
