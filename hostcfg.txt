@@ -10,20 +10,11 @@ mkdir xqiz.it/lib
 mkdir xqiz.it/platform
 # cd into 
 cd xqiz.it
-echo '{"dName":"C=USA,S=MA,L=Lexington,OU=hosting,O=xqiz.it,CN=host.xqiz.it",
-"cert-provider":"certbot",
-"httpPort":80,
-"httpsPort":443
+echo '{"dName":"CN=xtc-platform.localhost.xqiz.it",
+"cert-provider":"self",
+"httpPort":8080,
+"httpsPort":8090
 }' > platform/cfg.json
-
-# this only kept for reference if we ever decide to have a receiver intermediate
-# instance between the outside network and 'live' xtc instance
-#echo '{"dName":"C=USA,S=MA,L=Lexington,OU=hosting,O=xqiz.it,CN=host.xqiz.it",
-#"cert-provider":"certbot",
-#"httpPort":80,
-#"httpsPort":443,
-#"proxies":["192.168.1.30"]
-#}' > platform/cfg.json
   
 # copy the latest builds to HOST_IP_ADDR
 # Build paths may be different but we should probably be opinionated  
@@ -32,9 +23,10 @@ scp -r ~/xtclang/platform/lib/* USER@HOST_IP_ADDR:~/xqiz.it/lib
 
 # ensure that "openssl" and "keytool" are installed
 # install the "certbot"
-sudo apt install certbot
+# sudo apt install certbot
 
-# start the platform in debug mode
+# start the paas from ~/ in debug mode
+cd
 xec -L xqiz.it/lib/ kernel.xqiz.it $password
 # or in "production" mode
 nohup xec -L xqiz.it/lib/ kernel.xqiz.it $password &> platform.out&USER
