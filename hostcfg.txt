@@ -21,6 +21,9 @@ echo '{"dName":"CN=xtc-platform.localhost.xqiz.it",
 scp -r ~/xtclang/xvm/xdk/build/install/xdk/* USER@HOST_IP_ADDR:~/xdk
 scp -r ~/xtclang/platform/lib/* USER@HOST_IP_ADDR:~/xqiz.it/lib
 
+# update the HOST_MACHINE ~/.bashrc
+export XDK_HOME="/xdk"
+
 # maintained for when/if we use non-locally signed certs
 # ensure that "openssl" and "keytool" are installed
 # sudo apt install certbot
